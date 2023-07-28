@@ -1,3 +1,4 @@
+
 const Header = (title, date, temp) => {
   // TASK 1
   // ---------------------
@@ -11,7 +12,27 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+  const headerDiv = document.createElement('div');
+  const dataSpan = document.createElement('span');
+  const titleHead = document.createElement('h1')
+  const tempSpan = document.createElement('span')
+
+  headerDiv.classList.add('header')
+  dataSpan.classList.add('date')
+  titleHead.classList.add('title')
+  tempSpan.classList.add('temp')
+
+  dataSpan.textContent = date
+  titleHead.textContent = title
+  tempSpan.textContent = temp
+
+  headerDiv.appendChild(dataSpan)
+  headerDiv.appendChild(titleHead)
+  headerDiv.appendChild(tempSpan)
+  
+  return headerDiv
 }
+
 
 const headerAppender = (selector) => {
   // TASK 2
@@ -26,6 +47,8 @@ const headerAppender = (selector) => {
   // We are taking care of passing in the correct selector on line 16,
   // so all that you need to do is pass it into the querySelector method
   // for the tests to work!
+  const targetElement = document.querySelector(selector)
+  targetElement.appendChild(Header())
 }
 
 export { Header, headerAppender }
